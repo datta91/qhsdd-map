@@ -13,93 +13,42 @@
     <!-- <script type="text/javascript">
       // Make basemap
       const map = new L.Map("map", {
-        center: new L.latLng(10.74814547900117, 107.1609444238631),
+        center: new L.latLng(10.748, 107.161),
         zoom: 5,
         maxZoom: 20,
       });
 
-      const osm = new L.tileLayer(
+      const gg = new L.tileLayer(
         "http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}",
         {
           maxZoom: 20,
           subdomains: ["mt0", "mt1", "mt2", "mt3"],
         }
       );
-      map.addLayer(osm);
-
-      // Create foreground tile layer with mask
-      // var fg = L.tileLayer
-      //   .wmsMask("https://api.meeymap.com/geoserver/meey_map/wms", {
-      //     name: "meeymap",
-      //     maxZoom: 23,
-      //     minZoom: 4,
-      //     layers: "meey_map:QHC_VN",
-      //     format: "image/png",
-      //     transparent: true,
-      //     version: "2.0.0",
-      //     // srs: "EPSG:4326",
-      //     useCache: true,
-      //     maskSize: 1024, //optional
-      //   })
-      //   .addTo(map);
+      map.addLayer(gg);
 
       // // Add event handler to update mask position
       // map.on("mousemove", function (e) {
       //   fg.setCenter(e.containerPoint);
       // });
 
- /*     readTextFile("lyrs.json", function (text) {
-        const lyrs = JSON.parse(text);
-        if (!lyrs) return;
-        const group = L.layerGroup(
-          lyrs.map((index) => {
-            return new L.tileLayer(`https://lyrs.meeymap.com/${index.name}/{z}/{x}/{y}.png`, {
-              tms: 1,
-              minZoom: 10,
-              maxZoom: 25,
-              opacity: 0.8,
-maxNativeZoom:17,
-            });
-          })
-        );
-        map.addLayer(group);
-      });
 
-      function readTextFile(file, callback) {
-        var rawFile = new XMLHttpRequest();
-        rawFile.overrideMimeType("application/json");
-        rawFile.open("GET", file, true);
-        rawFile.onreadystatechange = function () {
-          if (rawFile.readyState === 4 && rawFile.status == "200") {
-            callback(rawFile.responseText);
-          }
-        };
-        rawFile.send(null);
-      }
-
-    */
-    var src = 'doc.kml';
-    var kmlLayer = new google.maps.KmlLayer(src, {
-    suppressInfoWindows: true,
-    preserveViewport: false,
-    map: map
-  });
     </script> -->
 
     <script>
       var map = L.map('map', {
         preferCanvas: true // recommended when loading large layers.
       });
-      map.setView(new L.LatLng(10.74814547900117, 107.1609444238631), 5);
+      map.setView(new L.LatLng(10.748, 107.161), 5);
     
-      const osm = new L.tileLayer(
+      const gg = new L.tileLayer(
         "http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}",
         {
           maxZoom: 20,
           subdomains: ["mt0", "mt1", "mt2", "mt3"],
         }
       );
-      map.addLayer(osm);
+      map.addLayer(gg);
     
       // Instantiate KMZ layer (async)
       var kmz = L.kmzLayer().addTo(map);
@@ -109,8 +58,42 @@ maxNativeZoom:17,
         //e.layer.addTo(map);
       });
     
-      // Add remote KMZ files as layers (NB if they are 3rd-party servers, they MUST have CORS enabled)
-      kmz.load('./HaNoi_DongDa_2030.kmz');
+      // Add remote KMZ files as layers
+      //kmz.load('./HaNoi_DongDa_2030.kmz');
+      kmz.load('./HaNoi/HaNoi_DongDa_2030.kmz');
+      kmz.load('./HaNoi/HaNoi_BacTuliem_2030.kmz');
+kmz.load('./HaNoi/HaNoi_BaDinh_01_2030.kmz');
+kmz.load('./HaNoi/HaNoi_BaDinh_02_2030.kmz');
+kmz.load('./HaNoi/HaNoi_BaVi_2030.kmz');
+kmz.load('./HaNoi/HaNoi CauGiay_2030.kmz');
+kmz.load('./HaNoi/HaNoi_ChuongMy_2030.kmz');
+kmz.load('./HaNoi/HaNoi_DanPhuong_2030.kmz');
+kmz.load('./HaNoi/HaNoi_DongAnh_2030.kmz');
+kmz.load('./HaNoi/HaNoi_DongDa_2030.kmz');
+kmz.load('./HaNoi/HaNoi_GiaLam_2030.kmz');
+kmz.load('./HaNoi/HaNoi_HaDong_2030.kmz');
+kmz.load('./HaNoi/HaNoi_HaiBa Trung_2030.kmz');
+kmz.load('./HaNoi/HaNoi_HoaiDuc_2030.kmz');
+kmz.load('./HaNoi/HaNoi_Hoang Mai_2030.kmz');
+kmz.load('./HaNoi/HaNoi_HoanKiem_2030.kmz');
+kmz.load('./HaNoi/HaNoi_Long Bien_2030.kmz');
+kmz.load('./HaNoi/HaNoi_MeLinh_2030.kmz');
+kmz.load('./HaNoi/HaNoi_MyDuc_2030.kmz');
+kmz.load('./HaNoi/HaNoi_NamTuliem_2030.kmz');
+kmz.load('./HaNoi/HaNoi_PhucTho_2030.kmz');
+kmz.load('./HaNoi/HaNoi_PhuXuyen_2030.kmz');
+kmz.load('./HaNoi/HaNoi_QuocOai_2030.kmz');
+kmz.load('./HaNoi/HaNoi_SocSon_2030.kmz');
+kmz.load('./HaNoi/HaNoi_Son Tay_2030.kmz');
+kmz.load('./HaNoi/HaNoi_TayHo_2030.kmz');
+kmz.load('./HaNoi/HaNoi_Thach That_2030.kmz');
+kmz.load('./HaNoi/HaNoi_ThanhOai_2030.kmz');
+kmz.load('./HaNoi/HaNoi_ThanhTri_2030.kmz');
+kmz.load('./HaNoi/HaNoi_ThanhXuan.kmz');
+kmz.load('./HaNoi/HaNoi ThuongTin_2030.kmz');
+kmz.load('./HaNoi/HaNoi_UngHoa_2030.kmz');
+
+      
       //kmz.load('./RanhGioiHanhChinh.kmz');
       
       //var control = L.control.layers(null, null, { collapsed:false }).addTo(map);
